@@ -6,17 +6,18 @@ from typing import Any
 
 class Queue:
     def __init__(self):
-        ...  # todo для очереди можно использовать python list
+        self.queue = []  # todo для очереди можно использовать python list
 
-    def enqueue(self, elem: Any) -> None:
+    def enqueue(self, elem: Any) -> Any:
         """
         Operation that add element to the end of the queue
 
         :param elem: element to be added
         :return: Nothing
         """
+        self.queue.insert(0, elem)
         print(elem)
-        return None
+        return self.queue
 
     def dequeue(self) -> Any:
         """
@@ -24,7 +25,10 @@ class Queue:
 
         :return: dequeued element
         """
-        return None
+
+        if not self.queue:
+            return None
+        return self.queue.pop()
 
     def peek(self, ind: int = 0) -> Any:
         """
@@ -33,8 +37,13 @@ class Queue:
         :param ind: index of element (count from the beginning)
         :return: peeked element
         """
+        self.reversed_index = -ind -1
+        try:
+            self.queue[ind]
+        except IndexError:
+            return None
         print(ind)
-        return None
+        return self.queue[self.reversed_index]
 
     def clear(self) -> None:
         """
@@ -42,4 +51,5 @@ class Queue:
 
         :return: None
         """
+        self.queue.clear()
         return None
