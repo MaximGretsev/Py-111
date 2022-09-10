@@ -21,3 +21,4 @@ def binary_search(elem: int, arr: Sequence) -> Optional[int]:
             right_border = mid_index - 1
         elif elem > mid_value:
             left_border = mid_index + 1
+    return None
